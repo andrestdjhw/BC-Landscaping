@@ -50,7 +50,7 @@
           </div>
 
           <div class="bc-topbar__right">
-            <span class="bc-topbar__pill">HOA-Approved &middot; Licensed &amp; Insured</span>
+            <span class="bc-topbar__pill">HOA-Approved &middot; 100% Satisfaction Guaranteed</span>
 
             <div class="bc-topbar__socials" aria-label="Social media">
               <a href="https://www.facebook.com/bclandscapingandhardscape/" target="_blank" rel="noopener noreferrer" class="bc-social-link" aria-label="Facebook">

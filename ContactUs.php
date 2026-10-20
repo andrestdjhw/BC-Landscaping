@@ -430,6 +430,7 @@ get_header(); ?>
 </style>
 
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="https://www.google.com/recaptcha/api.js?render=6Le1SIstAAAAAMpvWWIvOsnq4Jj488h6SmhTffRe"></script>
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
@@ -512,7 +513,12 @@ get_header(); ?>
     }
 
     /* ---------- Contact form: validation + EmailJS ---------- */
-    if (window.emailjs) emailjs.init({ publicKey: "REPLACE_WITH_EMAILJS_PUBLIC_KEY" });
+    const BC_EMAILJS_SERVICE_ID = "service_g0f8bxk";
+    const BC_EMAILJS_TEMPLATE_ID = "template_vjswkmr";
+    const BC_EMAILJS_AUTOREPLY_TEMPLATE_ID = "template_8omszme";
+    const BC_RECAPTCHA_SITE_KEY = "6Le1SIstAAAAAMpvWWIvOsnq4Jj488h6SmhTffRe";
+
+    if (window.emailjs) emailjs.init({ publicKey: "jouOOfXfhaIpXnqML" });
 
     const form = document.getElementById("bc-contact-form");
     if (form) {
@@ -534,31 +540,41 @@ get_header(); ?>
         if (honeypot && honeypot.value) return;
 
         if (!policyCheck.checked) return showError("Please accept the Privacy Policy and Terms & Conditions before submitting.");
+        if (typeof grecaptcha === "undefined") return showError("reCAPTCHA failed to load. Please refresh the page and try again.");
 
         submitBtn.disabled = true;
         const originalText = submitBtn.innerHTML;
         submitBtn.innerHTML = "<span>Sending...</span>";
 
-        const formData = {
-          name: form.querySelector('input[name="full_name"]').value.trim(),
-          phone: form.querySelector('input[name="phone"]').value.trim(),
-          email: form.querySelector('input[name="email"]').value.trim(),
-          message: form.querySelector('textarea[name="message"]').value.trim(),
-        };
+        const restoreBtn = () => { submitBtn.disabled = false; submitBtn.innerHTML = originalText; };
 
-        // Reemplazar con el service_id / template_id reales de EmailJS del cliente
-        emailjs.send("REPLACE_SERVICE_ID", "REPLACE_TEMPLATE_ID", formData)
-          .then(function () {
-            form.reset();
-            showSuccess("Thank you. Your message has been sent successfully. We'll be in touch soon.");
-          })
-          .catch(function () {
-            showError("Something went wrong while sending your message. Please try again, or call us directly.");
-          })
-          .finally(function () {
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = originalText;
+        grecaptcha.ready(function () {
+          grecaptcha.execute(BC_RECAPTCHA_SITE_KEY, { action: "submit" }).then(function (captchaResponse) {
+            const formData = {
+              name: form.querySelector('input[name="full_name"]').value.trim(),
+              phone: form.querySelector('input[name="phone"]').value.trim(),
+              email: form.querySelector('input[name="email"]').value.trim(),
+              message: form.querySelector('textarea[name="message"]').value.trim(),
+              "g-recaptcha-response": captchaResponse
+            };
+
+            Promise.all([
+              emailjs.send(BC_EMAILJS_SERVICE_ID, BC_EMAILJS_TEMPLATE_ID, formData),
+              emailjs.send(BC_EMAILJS_SERVICE_ID, BC_EMAILJS_AUTOREPLY_TEMPLATE_ID, formData)
+            ])
+              .then(function () {
+                form.reset();
+                showSuccess("Thank you. Your message has been sent successfully. We'll be in touch soon.");
+              })
+              .catch(function () {
+                showError("Something went wrong while sending your message. Please try again, or call us directly.");
+              })
+              .finally(restoreBtn);
+          }).catch(function () {
+            showError("reCAPTCHA verification failed. Please try again.");
+            restoreBtn();
           });
+        });
       });
     }
   });

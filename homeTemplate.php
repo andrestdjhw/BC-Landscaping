@@ -42,7 +42,6 @@ get_header(); ?>
       $name_id = "{$form_id}_name"; $phone_id = "{$form_id}_phone"; $email_id = "{$form_id}_email";
       $service_id = "{$form_id}_service"; $zip_id = "{$form_id}_zip"; $policy_id = "{$form_id}_policy";
       $submit_id = "{$form_id}_submit"; $success_id = "{$form_id}_success"; $error_id = "{$form_id}_error";
-      $captcha_id = "{$form_id}_captcha";
       ob_start(); ?>
       <div class="bc-formcard bc-formcard--<?php echo esc_attr($variant); ?> bc-tilt">
         <img src="<?php echo esc_url($swirl_b); ?>" alt="" class="bc-formcard__ornament" aria-hidden="true">
@@ -54,11 +53,10 @@ get_header(); ?>
           data-error-id="<?php echo esc_attr($error_id); ?>"
           data-policy-id="<?php echo esc_attr($policy_id); ?>"
           data-submit-id="<?php echo esc_attr($submit_id); ?>"
-          data-captcha-id="<?php echo esc_attr($captcha_id); ?>"
         >
           <p class="bc-estimate-form__eyebrow">Request a Free Estimate</p>
           <h3 class="bc-estimate-form__title">Tell us about your property.</h3>
-          <p class="bc-estimate-form__trust">15+ Years in Arizona &middot; HOA-Approved &middot; Licensed &amp; Insured</p>
+          <p class="bc-estimate-form__trust">15+ Years in Arizona &middot; HOA-Approved &middot; 100% Satisfaction Guaranteed</p>
 
           <div class="bc-estimate-form__grid">
             <div class="bc-estimate-form__field">
@@ -92,8 +90,6 @@ get_header(); ?>
 
           <div id="<?php echo esc_attr($success_id); ?>" class="bc-form-message bc-form-message--success" aria-live="polite"></div>
           <div id="<?php echo esc_attr($error_id); ?>" class="bc-form-message bc-form-message--error" aria-live="polite"></div>
-
-          <div id="<?php echo esc_attr($captcha_id); ?>" class="js-bc-recaptcha" data-sitekey="REPLACE_WITH_RECAPTCHA_SITE_KEY"></div>
 
           <label class="bc-estimate-form__check">
             <input id="<?php echo esc_attr($policy_id); ?>" type="checkbox" required>
@@ -204,7 +200,8 @@ get_header(); ?>
 
         <p class="bc-fade-in-2 mt-6 max-w-2xl text-base leading-7 text-white/85 md:text-lg lg:max-w-xl">
           For 15+ years, Maricopa&rsquo;s finest communities have trusted BC Landscaping &amp; Hardscape for
-          HOA-compliant, water-wise outdoor spaces, designed, built, and maintained by one team.
+          HOA-compliant, water-wise outdoor spaces, designed, built, and maintained by one team. Backed by
+          a satisfaction guarantee, with 100% quality artificial turf and expert irrigation systems built to last.
         </p>
 
         <div class="bc-fade-in-3 bc-cursor-glow mt-10 flex flex-col gap-4 sm:flex-row lg:justify-start">
@@ -242,7 +239,7 @@ get_header(); ?>
     <div class="bc-marquee__track">
       <?php for ($i = 0; $i < 2; $i++) :
         $trust = [
-          ['15+ Years in Arizona', '#117682'], ['HOA-Approved', '#BCBF60'], ['Licensed &amp; Insured', '#8B0333'],
+          ['15+ Years in Arizona', '#117682'], ['HOA-Approved', '#BCBF60'], ['100% Satisfaction Guaranteed', '#8B0333'],
           ['A+ BBB Rated', '#117682'], ['In-House Crew &amp; Equipment', '#BCBF60'], ['Xeriscaping Specialists', '#8B0333'],
         ]; ?>
         <div class="bc-marquee__group" <?php echo $i === 1 ? 'aria-hidden="true"' : ''; ?>>
@@ -289,6 +286,7 @@ get_header(); ?>
             <div class="bc-partner-collage__main">
               <img src="/wp-content/uploads/2026/07/IMAGE-BA-4-2.jpg" alt="BC Landscaping & Hardscape completed project" class="h-full w-full object-cover">
             </div>
+            <span class="bc-signature-pop absolute -left-3 top-4 z-10 rounded-[6px] bg-[#117682] px-3 py-1 text-[10px] font-black uppercase leading-tight tracking-[0.06em] text-white shadow-lg">Artificial Turf 100%</span>
             <div class="bc-partner-collage__badge">
               <img src="<?php echo esc_url($isotipo); ?>" alt="BC Landscaping & Hardscape">
               <span>15+ yrs</span>
@@ -385,6 +383,30 @@ get_header(); ?>
     <div class="mx-auto mt-4 max-w-7xl px-4">
       <div class="bc-rail-progress">
         <span class="js-bc-rail-progress-fill bc-rail-progress__fill" data-rail="services"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- TESTIMONIAL                                                   -->
+  <!-- ============================================================ -->
+  <section class="relative overflow-hidden bg-[#E6DACF] py-20 lg:py-24">
+    <img src="<?php echo esc_url($swirl_b); ?>" alt="" aria-hidden="true" class="bc-swirl-draw pointer-events-none absolute left-1/2 top-8 h-[260px] w-[260px] -translate-x-1/2 rotate-180 opacity-30">
+
+    <div class="relative mx-auto max-w-6xl px-4 text-center">
+      <div class="bc-reveal-up">
+        <img src="<?php echo esc_url($isotipo); ?>" alt="" aria-hidden="true" class="bc-testimonial-mark mx-auto h-14 w-auto">
+        <div class="mt-4 flex items-center justify-center gap-2 text-xs font-black uppercase tracking-[0.16em] text-[#8B0333]">
+          <span>What Our Clients Say</span>
+        </div>
+        <div class="bc-trustindex-widget mt-6">
+          <?php echo do_shortcode('[trustindex no-registration=google]'); ?>
+        </div>
+
+        <a href="https://share.google/zZ0sZSDsEjN143mQX" target="_blank" rel="noopener noreferrer" class="bc-btn bc-btn-dark bc-magnetic mt-10 inline-flex items-center justify-center gap-2 px-8 py-4 text-sm font-black uppercase tracking-[0.14em] text-white">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6.35 6.98.7-5.24 4.73 1.53 6.85L12 17.77l-6.17 3.36 1.53-6.85L2.12 9.55l6.98-.7L12 2.5z"/></svg>
+          <span>Leave a Review</span>
+        </a>
       </div>
     </div>
   </section>
@@ -589,25 +611,6 @@ get_header(); ?>
             </div>
           </div>
         <?php endforeach; ?>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================ -->
-  <!-- TESTIMONIAL                                                   -->
-  <!-- ============================================================ -->
-  <section class="relative overflow-hidden bg-[#E6DACF] py-20 lg:py-24">
-    <img src="<?php echo esc_url($swirl_b); ?>" alt="" aria-hidden="true" class="bc-swirl-draw pointer-events-none absolute left-1/2 top-8 h-[260px] w-[260px] -translate-x-1/2 rotate-180 opacity-30">
-
-    <div class="relative mx-auto max-w-6xl px-4 text-center">
-      <div class="bc-reveal-up">
-        <img src="<?php echo esc_url($isotipo); ?>" alt="" aria-hidden="true" class="bc-testimonial-mark mx-auto h-14 w-auto">
-        <div class="mt-4 flex items-center justify-center gap-2 text-xs font-black uppercase tracking-[0.16em] text-[#8B0333]">
-          <span>What Our Clients Say</span>
-        </div>
-        <div class="bc-trustindex-widget mt-6">
-          <?php echo do_shortcode('[trustindex no-registration=google]'); ?>
-        </div>
       </div>
     </div>
   </section>
@@ -965,15 +968,7 @@ get_header(); ?>
 </style>
 
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script>
-  window.bcHomeRecaptchaReady = function () {
-    document.querySelectorAll(".js-bc-recaptcha").forEach((node) => {
-      if (node.dataset.widgetId || typeof grecaptcha === "undefined") return;
-      node.dataset.widgetId = String(grecaptcha.render(node, { sitekey: node.dataset.sitekey }));
-    });
-  };
-</script>
-<script src="https://www.google.com/recaptcha/api.js?onload=bcHomeRecaptchaReady&render=explicit" async defer></script>
+<script src="https://www.google.com/recaptcha/api.js?render=6Le1SIstAAAAAMpvWWIvOsnq4Jj488h6SmhTffRe"></script>
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
@@ -1158,15 +1153,19 @@ get_header(); ?>
     });
 
     /* ---------- Estimate forms: validation + EmailJS ---------- */
-    if (window.emailjs) emailjs.init({ publicKey: "REPLACE_WITH_EMAILJS_PUBLIC_KEY" });
+    const BC_EMAILJS_SERVICE_ID = "service_g0f8bxk";
+    const BC_EMAILJS_TEMPLATE_ID = "template_vjswkmr";
+    const BC_EMAILJS_AUTOREPLY_TEMPLATE_ID = "template_8omszme";
+    const BC_RECAPTCHA_SITE_KEY = "6Le1SIstAAAAAMpvWWIvOsnq4Jj488h6SmhTffRe";
+
+    if (window.emailjs) emailjs.init({ publicKey: "jouOOfXfhaIpXnqML" });
 
     document.querySelectorAll(".js-bc-email-form").forEach((form) => {
       const successBox = document.getElementById(form.dataset.successId);
       const errorBox = document.getElementById(form.dataset.errorId);
       const policyCheck = document.getElementById(form.dataset.policyId);
       const submitBtn = document.getElementById(form.dataset.submitId);
-      const captchaNode = document.getElementById(form.dataset.captchaId);
-      if (!successBox || !errorBox || !policyCheck || !submitBtn || !captchaNode) return;
+      if (!successBox || !errorBox || !policyCheck || !submitBtn) return;
 
       const resetMessages = () => { [successBox, errorBox].forEach((b) => { b.textContent = ""; b.classList.remove("is-visible"); }); };
       const showSuccess = (msg) => { successBox.textContent = msg; successBox.classList.add("is-visible"); };
@@ -1177,28 +1176,36 @@ get_header(); ?>
         resetMessages();
         if (!policyCheck.checked) return showError("Please accept the Privacy Policy and Terms & Conditions before submitting.");
         if (typeof grecaptcha === "undefined") return showError("reCAPTCHA failed to load. Please refresh the page and try again.");
-        const widgetId = captchaNode.dataset.widgetId;
-        if (typeof widgetId === "undefined") return showError("reCAPTCHA is still loading. Please wait a moment and try again.");
-        const captchaResponse = grecaptcha.getResponse(Number(widgetId));
-        if (!captchaResponse) return showError("Please complete the reCAPTCHA verification.");
 
         submitBtn.disabled = true;
         const originalText = submitBtn.innerHTML;
         submitBtn.innerHTML = "<span>Sending...</span>";
 
-        const formData = {
-          name: form.querySelector('input[name="full_name"]').value.trim(),
-          phone: form.querySelector('input[name="phone"]').value.trim(),
-          email: form.querySelector('input[name="email"]').value.trim(),
-          zip: form.querySelector('input[name="zip"]').value.trim(),
-          service: form.querySelector('select[name="service"]').value,
-          "g-recaptcha-response": captchaResponse
-        };
+        const restoreBtn = () => { submitBtn.disabled = false; submitBtn.innerHTML = originalText; };
 
-        emailjs.send("REPLACE_SERVICE_ID", "REPLACE_TEMPLATE_ID", formData)
-          .then(() => { form.reset(); grecaptcha.reset(Number(widgetId)); showSuccess("Thank you. Your request has been sent successfully. We'll be in touch soon."); })
-          .catch(() => showError("Something went wrong while sending your request. Please try again."))
-          .finally(() => { submitBtn.disabled = false; submitBtn.innerHTML = originalText; });
+        grecaptcha.ready(function () {
+          grecaptcha.execute(BC_RECAPTCHA_SITE_KEY, { action: "submit" }).then(function (captchaResponse) {
+            const formData = {
+              name: form.querySelector('input[name="full_name"]').value.trim(),
+              phone: form.querySelector('input[name="phone"]').value.trim(),
+              email: form.querySelector('input[name="email"]').value.trim(),
+              zip: form.querySelector('input[name="zip"]').value.trim(),
+              service: form.querySelector('select[name="service"]').value,
+              "g-recaptcha-response": captchaResponse
+            };
+
+            Promise.all([
+              emailjs.send(BC_EMAILJS_SERVICE_ID, BC_EMAILJS_TEMPLATE_ID, formData),
+              emailjs.send(BC_EMAILJS_SERVICE_ID, BC_EMAILJS_AUTOREPLY_TEMPLATE_ID, formData)
+            ])
+              .then(() => { form.reset(); showSuccess("Thank you. Your request has been sent successfully. We'll be in touch soon."); })
+              .catch(() => showError("Something went wrong while sending your request. Please try again."))
+              .finally(restoreBtn);
+          }).catch(() => {
+            showError("reCAPTCHA verification failed. Please try again.");
+            restoreBtn();
+          });
+        });
       });
     });
   });

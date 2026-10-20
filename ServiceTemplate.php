@@ -365,7 +365,7 @@ get_header(); ?>
         <ul class="mt-6 space-y-3">
           <?php
             $gallery_trust = [
-              'Licensed, insured, and HOA-compliant',
+              '100% Satisfaction Guaranteed',
               'Installed by our in-house crew, no subcontractors',
               'Backed by our workmanship guarantee',
             ];
