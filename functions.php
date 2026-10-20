@@ -6,7 +6,11 @@ function boilerplate_load_assets() {
   $js_ver = file_exists($js_path) ? filemtime($js_path) : '1.0';
   $css_ver = file_exists($css_path) ? filemtime($css_path) : '1.0';
 
-  wp_enqueue_script('ourmainjs', get_theme_file_uri('/build/index.js'), array('wp-element', 'react-jsx-runtime'), $js_ver, true);
+  // wp-scripts genera index.asset.php con las dependencias reales del bundle (react, react-dom, etc.)
+  $asset_path = get_theme_file_path('/build/index.asset.php');
+  $js_deps = file_exists($asset_path) ? (require $asset_path)['dependencies'] : array('react', 'react-dom', 'react-jsx-runtime');
+
+  wp_enqueue_script('ourmainjs', get_theme_file_uri('/build/index.js'), $js_deps, $js_ver, true);
   wp_enqueue_style('ourmaincss', get_theme_file_uri('/build/index.css'), array(), $css_ver);
 }
 

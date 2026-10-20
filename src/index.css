@@ -253,3 +253,68 @@ body.bc-mobile-open { overflow: hidden; }
 .bc-footer__legal a { color: rgba(255,255,255,0.6); text-decoration: none; }
 .bc-footer__legal a:hover { color: var(--bc-green); }
 .bc-footer__legal span { color: rgba(255,255,255,0.3); }
+
+/* ================================================================
+   ContactForm (src/scripts/ContactForm.js), estilos compartidos
+   ================================================================ */
+.bc-hp-field { position: absolute !important; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+.bc-form-message { display: none; padding: 0.85rem 1rem; border: 1px solid transparent; border-radius: 8px; font-size: 0.82rem; line-height: 1.6; }
+.bc-form-message.is-visible { display: block; }
+.bc-form-message--success { background: rgba(188,191,96,.14); border-color: rgba(188,191,96,.32); color: #4c611c; }
+.bc-form-message--error { background: rgba(180,55,55,.10); border-color: rgba(180,55,55,.24); color: #8b2f2f; }
+
+/* ---- Variante "contact": floating labels sobre fondo claro ---- */
+.bc-float-form { display: flex; flex-direction: column; gap: 1.4rem; }
+.bc-float-field { position: relative; }
+.bc-float-field input,
+.bc-float-field textarea {
+  width: 100%; border: 0; border-bottom: 2px solid rgba(42,1,17,0.16); background: transparent;
+  padding: 0.65rem 0.1rem; font-size: 0.98rem; color: var(--bc-wine); outline: none;
+  transition: border-color .25s ease;
+}
+.bc-float-field textarea { resize: vertical; min-height: 90px; }
+.bc-float-field label {
+  position: absolute; left: 0.1rem; top: 0.65rem; font-size: 0.98rem; color: rgba(42,1,17,0.45);
+  pointer-events: none; transition: transform .22s cubic-bezier(.16,1,.3,1), font-size .22s ease, color .22s ease;
+  transform-origin: left top;
+}
+.bc-float-field input:focus,
+.bc-float-field textarea:focus { border-color: var(--bc-teal); }
+.bc-float-field input:focus + label,
+.bc-float-field input:not(:placeholder-shown) + label,
+.bc-float-field textarea:focus + label,
+.bc-float-field textarea:not(:placeholder-shown) + label {
+  transform: translateY(-1.3rem) scale(0.78); color: var(--bc-teal); font-weight: 800;
+}
+.bc-float-check { display: flex; gap: 0.65rem; font-size: 0.82rem; line-height: 1.6; color: rgba(42,1,17,0.68); }
+.bc-float-check input { margin-top: 0.2rem; accent-color: var(--bc-teal); }
+.bc-float-check a { color: var(--bc-teal); text-decoration: underline; }
+
+/* ---- Variante "estimate": tarjeta oscura ---- */
+.bc-formcard { position: relative; overflow: hidden; }
+.bc-formcard__ornament { position: absolute; top: -40px; right: -40px; width: 180px; height: 180px; opacity: .15; transform: rotate(20deg); pointer-events: none; }
+.bc-estimate-form { position: relative; border: 1px solid rgba(255,255,255,.14); border-radius: 8px; background: rgba(255,255,255,.08); box-shadow: 0 24px 60px rgba(0,0,0,.20); padding: 1.5rem; border-top: 3px solid var(--bc-green); }
+.bc-estimate-form__eyebrow { margin: 0; font-size: .68rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: rgba(255,255,255,.72); }
+.bc-estimate-form__title { margin: .5rem 0 0; font-size: 1.3rem; font-weight: 800; line-height: 1.1; letter-spacing: -.02em; color: #fff; }
+.bc-estimate-form__trust { margin-top: .6rem; margin-bottom: 1rem; font-size: .68rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--bc-green); }
+.bc-estimate-form__grid { display: grid; gap: .9rem; grid-template-columns: 1fr; }
+.bc-estimate-form__field { display: grid; gap: .4rem; }
+.bc-estimate-form__field--full { grid-column: 1/-1; }
+.bc-estimate-form__field label { font-size: .7rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.78); }
+.bc-estimate-form__field input,
+.bc-estimate-form__field select { width: 100%; min-height: 50px; border: 1px solid rgba(255,255,255,.16); border-radius: 8px; background: rgba(255,255,255,.08); padding: .9rem 1rem; font-size: .95rem; color: #fff; outline: none; transition: border-color .2s ease, background-color .2s ease, box-shadow .2s ease; }
+.bc-estimate-form__field input::placeholder { color: rgba(255,255,255,.55); }
+.bc-estimate-form__field input:focus,
+.bc-estimate-form__field select:focus { border-color: var(--bc-green); box-shadow: 0 0 0 3px rgba(188,191,96,.22); background: rgba(255,255,255,.12); }
+.bc-estimate-form__field select option { color: #2A0111; }
+.bc-estimate-form__micro { font-size: .74rem; line-height: 1.6; color: rgba(255,255,255,.62); margin-top: .9rem; }
+.bc-estimate-form .bc-form-message { margin-top: .75rem; padding: .9rem 1rem; }
+.bc-estimate-form .bc-form-message--success { background: rgba(188,191,96,.14); border-color: rgba(188,191,96,.30); color: #eef0d8; }
+.bc-estimate-form .bc-form-message--error { background: rgba(180,55,55,.14); border-color: rgba(180,55,55,.28); color: #ffd7d7; }
+.bc-estimate-form__check { display: flex; gap: .7rem; margin-top: 1rem; font-size: .76rem; line-height: 1.6; color: rgba(255,255,255,.76); }
+.bc-estimate-form__check input { margin-top: .15rem; accent-color: var(--bc-green); }
+.bc-estimate-form__check a { color: var(--bc-mist); text-decoration: underline; }
+.bc-estimate-form__submit { width: 100%; margin-top: 1rem; min-height: 54px; }
+.bc-estimate-form__submit[disabled] { cursor: not-allowed; opacity: .75; }
+@media (min-width: 768px) { .bc-estimate-form__grid { grid-template-columns: 1fr 1fr; } }

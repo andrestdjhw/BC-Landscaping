@@ -70,48 +70,7 @@ get_header(); ?>
         <p class="relative z-10 text-xs font-black uppercase tracking-[0.22em] text-[#117682]">Send a Message</p>
         <h2 class="relative z-10 mt-3 text-2xl font-black tracking-[-0.02em] text-[#2A0111] md:text-3xl">We&rsquo;ll Get Back to You Fast</h2>
 
-        <form id="bc-contact-form" class="bc-float-form js-bc-email-form relative z-10 mt-8" method="post" action="#"
-          data-success-id="bc-contact-success" data-error-id="bc-contact-error"
-          data-policy-id="bc-contact-policy" data-submit-id="bc-contact-submit">
-
-          <div class="bc-float-field">
-            <input id="bc-contact-name" type="text" name="full_name" placeholder=" " required>
-            <label for="bc-contact-name">Full Name *</label>
-          </div>
-
-          <div class="bc-float-field">
-            <input id="bc-contact-phone" type="tel" name="phone" placeholder=" " required>
-            <label for="bc-contact-phone">Phone Number *</label>
-          </div>
-
-          <div class="bc-float-field">
-            <input id="bc-contact-email" type="email" name="email" placeholder=" " required>
-            <label for="bc-contact-email">Email Address *</label>
-          </div>
-
-          <div class="bc-float-field">
-            <textarea id="bc-contact-message" name="message" rows="4" placeholder=" "></textarea>
-            <label for="bc-contact-message">Message</label>
-          </div>
-
-          <!-- honeypot anti-spam, mantener oculto -->
-          <div class="bc-hp-field" aria-hidden="true">
-            <label for="bc-contact-hp">Leave this field empty</label>
-            <input id="bc-contact-hp" type="text" name="hp_name" tabindex="-1" autocomplete="off">
-          </div>
-
-          <label class="bc-float-check">
-            <input id="bc-contact-policy" type="checkbox" required>
-            <span>I agree to the <a href="/privacy-policy">Privacy Policy</a> and <a href="/terms-and-conditions">Terms &amp; Conditions</a>.</span>
-          </label>
-
-          <div id="bc-contact-success" class="bc-form-message bc-form-message--success" aria-live="polite"></div>
-          <div id="bc-contact-error" class="bc-form-message bc-form-message--error" aria-live="polite"></div>
-
-          <button id="bc-contact-submit" type="submit" class="bc-btn bc-btn-green bc-magnetic mt-2 inline-flex w-full items-center justify-center px-8 py-4 text-sm font-black uppercase tracking-[0.14em]">
-            <span>Send Message</span>
-          </button>
-        </form>
+        <div class="js-bc-contact-form" data-variant="contact" data-id="bc-contact-form"></div>
 
         <p class="relative z-10 mt-5 text-center text-[13px] text-[#2A0111]/60">
           Looking for a project quote instead? <a href="/contact-us" class="font-bold text-[#117682] underline underline-offset-2">Get an Estimate &rarr;</a>
@@ -360,37 +319,6 @@ get_header(); ?>
   .bc-open-status.is-closed{ color:var(--bc-burgundy); }
   @keyframes bcOpenPulse{ 0%,100%{ box-shadow:0 0 0 0 rgba(188,191,96,.5);} 50%{ box-shadow:0 0 0 5px rgba(188,191,96,0);} }
 
-  /* ---- Floating-label form (nuevo, propio de esta página) ---- */
-  .bc-float-form{ display:flex; flex-direction:column; gap:1.4rem; }
-  .bc-float-field{ position:relative; }
-  .bc-float-field input,
-  .bc-float-field textarea{
-    width:100%; border:0; border-bottom:2px solid rgba(42,1,17,0.16); background:transparent;
-    padding:0.65rem 0.1rem; font-size:0.98rem; color:var(--bc-wine); outline:none;
-    transition:border-color .25s ease;
-  }
-  .bc-float-field textarea{ resize:vertical; min-height:90px; }
-  .bc-float-field label{
-    position:absolute; left:0.1rem; top:0.65rem; font-size:0.98rem; color:rgba(42,1,17,0.45);
-    pointer-events:none; transition:transform .22s cubic-bezier(.16,1,.3,1), font-size .22s ease, color .22s ease;
-    transform-origin:left top;
-  }
-  .bc-float-field input:focus,
-  .bc-float-field textarea:focus{ border-color:var(--bc-teal); }
-  .bc-float-field input:focus + label,
-  .bc-float-field input:not(:placeholder-shown) + label,
-  .bc-float-field textarea:focus + label,
-  .bc-float-field textarea:not(:placeholder-shown) + label{
-    transform:translateY(-1.3rem) scale(0.78); color:var(--bc-teal); font-weight:800;
-  }
-  .bc-hp-field{ position:absolute !important; left:-9999px; width:1px; height:1px; overflow:hidden; }
-  .bc-float-check{ display:flex; gap:0.65rem; font-size:0.82rem; line-height:1.6; color:rgba(42,1,17,0.68); }
-  .bc-float-check input{ margin-top:0.2rem; accent-color:var(--bc-teal); }
-  .bc-float-check a{ color:var(--bc-teal); text-decoration:underline; }
-  .bc-form-message{ display:none; padding:0.85rem 1rem; border:1px solid transparent; border-radius:8px; font-size:0.82rem; line-height:1.6; }
-  .bc-form-message.is-visible{ display:block; }
-  .bc-form-message--success{ background:rgba(188,191,96,.14); border-color:rgba(188,191,96,.32); color:#4c611c; }
-  .bc-form-message--error{ background:rgba(180,55,55,.10); border-color:rgba(180,55,55,.24); color:#8b2f2f; }
 
   /* ---- FAQ accordion — cards con número, ícono +/− y tono por pregunta ---- */
   .bc-accordion__item{
@@ -429,8 +357,6 @@ get_header(); ?>
   }
 </style>
 
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script src="https://www.google.com/recaptcha/api.js?render=6Le1SIstAAAAAMpvWWIvOsnq4Jj488h6SmhTffRe"></script>
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
@@ -510,72 +436,6 @@ get_header(); ?>
       const isOpen = isWeekday && isDuringHours;
       statusEl.classList.add(isOpen ? "is-open" : "is-closed");
       statusLabel.textContent = isOpen ? "Open Now" : "Closed Now";
-    }
-
-    /* ---------- Contact form: validation + EmailJS ---------- */
-    const BC_EMAILJS_SERVICE_ID = "service_g0f8bxk";
-    const BC_EMAILJS_TEMPLATE_ID = "template_vjswkmr";
-    const BC_EMAILJS_AUTOREPLY_TEMPLATE_ID = "template_8omszme";
-    const BC_RECAPTCHA_SITE_KEY = "6Le1SIstAAAAAMpvWWIvOsnq4Jj488h6SmhTffRe";
-
-    if (window.emailjs) emailjs.init({ publicKey: "jouOOfXfhaIpXnqML" });
-
-    const form = document.getElementById("bc-contact-form");
-    if (form) {
-      const successBox = document.getElementById(form.dataset.successId);
-      const errorBox = document.getElementById(form.dataset.errorId);
-      const policyCheck = document.getElementById(form.dataset.policyId);
-      const submitBtn = document.getElementById(form.dataset.submitId);
-
-      const resetMessages = () => { [successBox, errorBox].forEach((b) => { b.textContent = ""; b.classList.remove("is-visible"); }); };
-      const showSuccess = (msg) => { successBox.textContent = msg; successBox.classList.add("is-visible"); };
-      const showError = (msg) => { errorBox.textContent = msg; errorBox.classList.add("is-visible"); };
-
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        resetMessages();
-
-        // honeypot: si el campo oculto viene lleno, es un bot -> cortar en silencio
-        const honeypot = form.querySelector('input[name="hp_name"]');
-        if (honeypot && honeypot.value) return;
-
-        if (!policyCheck.checked) return showError("Please accept the Privacy Policy and Terms & Conditions before submitting.");
-        if (typeof grecaptcha === "undefined") return showError("reCAPTCHA failed to load. Please refresh the page and try again.");
-
-        submitBtn.disabled = true;
-        const originalText = submitBtn.innerHTML;
-        submitBtn.innerHTML = "<span>Sending...</span>";
-
-        const restoreBtn = () => { submitBtn.disabled = false; submitBtn.innerHTML = originalText; };
-
-        grecaptcha.ready(function () {
-          grecaptcha.execute(BC_RECAPTCHA_SITE_KEY, { action: "submit" }).then(function (captchaResponse) {
-            const formData = {
-              name: form.querySelector('input[name="full_name"]').value.trim(),
-              phone: form.querySelector('input[name="phone"]').value.trim(),
-              email: form.querySelector('input[name="email"]').value.trim(),
-              message: form.querySelector('textarea[name="message"]').value.trim(),
-              "g-recaptcha-response": captchaResponse
-            };
-
-            Promise.all([
-              emailjs.send(BC_EMAILJS_SERVICE_ID, BC_EMAILJS_TEMPLATE_ID, formData),
-              emailjs.send(BC_EMAILJS_SERVICE_ID, BC_EMAILJS_AUTOREPLY_TEMPLATE_ID, formData)
-            ])
-              .then(function () {
-                form.reset();
-                showSuccess("Thank you. Your message has been sent successfully. We'll be in touch soon.");
-              })
-              .catch(function () {
-                showError("Something went wrong while sending your message. Please try again, or call us directly.");
-              })
-              .finally(restoreBtn);
-          }).catch(function () {
-            showError("reCAPTCHA verification failed. Please try again.");
-            restoreBtn();
-          });
-        });
-      });
     }
   });
 </script>

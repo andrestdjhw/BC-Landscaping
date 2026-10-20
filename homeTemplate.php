@@ -29,81 +29,6 @@ get_header(); ?>
     $icon_lightscape = '/wp-content/uploads/2026/07/Graficos_Lightscape.png';
     $icon_hardscape  = '/wp-content/uploads/2026/07/Graficos_Hardscape.png';
 
-    $service_options = [
-      'Xeriscaping & Desert Design', 'Grass & Turf Installation', 'Hardscaping',
-      'Irrigation Systems', 'Lightscape Installation', 'Tree Services',
-      'Lawn & Garden Maintenance', 'Concrete & Retaining Walls', 'Other',
-    ];
-
-    // ------------------------------------------------------------
-    // ESTIMATE FORM, corto: nombre, teléfono, email, zip, servicio
-    // ------------------------------------------------------------
-    $render_estimate_form = function ($form_id, $variant = 'dark') use ($service_options, $swirl_b) {
-      $name_id = "{$form_id}_name"; $phone_id = "{$form_id}_phone"; $email_id = "{$form_id}_email";
-      $service_id = "{$form_id}_service"; $zip_id = "{$form_id}_zip"; $policy_id = "{$form_id}_policy";
-      $submit_id = "{$form_id}_submit"; $success_id = "{$form_id}_success"; $error_id = "{$form_id}_error";
-      ob_start(); ?>
-      <div class="bc-formcard bc-formcard--<?php echo esc_attr($variant); ?> bc-tilt">
-        <img src="<?php echo esc_url($swirl_b); ?>" alt="" class="bc-formcard__ornament" aria-hidden="true">
-        <form
-          id="<?php echo esc_attr($form_id); ?>"
-          class="bc-estimate-form js-bc-email-form"
-          method="post" action="#"
-          data-success-id="<?php echo esc_attr($success_id); ?>"
-          data-error-id="<?php echo esc_attr($error_id); ?>"
-          data-policy-id="<?php echo esc_attr($policy_id); ?>"
-          data-submit-id="<?php echo esc_attr($submit_id); ?>"
-        >
-          <p class="bc-estimate-form__eyebrow">Request a Free Estimate</p>
-          <h3 class="bc-estimate-form__title">Tell us about your property.</h3>
-          <p class="bc-estimate-form__trust">15+ Years in Arizona &middot; HOA-Approved &middot; 100% Satisfaction Guaranteed</p>
-
-          <div class="bc-estimate-form__grid">
-            <div class="bc-estimate-form__field">
-              <label for="<?php echo esc_attr($name_id); ?>">Full Name *</label>
-              <input id="<?php echo esc_attr($name_id); ?>" type="text" name="full_name" placeholder="Your full name" required>
-            </div>
-            <div class="bc-estimate-form__field">
-              <label for="<?php echo esc_attr($phone_id); ?>">Phone Number *</label>
-              <input id="<?php echo esc_attr($phone_id); ?>" type="tel" name="phone" placeholder="(480) 229-4950" required>
-            </div>
-            <div class="bc-estimate-form__field">
-              <label for="<?php echo esc_attr($email_id); ?>">Email Address *</label>
-              <input id="<?php echo esc_attr($email_id); ?>" type="email" name="email" placeholder="you@example.com" required>
-            </div>
-            <div class="bc-estimate-form__field">
-              <label for="<?php echo esc_attr($zip_id); ?>">Property ZIP *</label>
-              <input id="<?php echo esc_attr($zip_id); ?>" type="text" name="zip" placeholder="85268" inputmode="numeric" maxlength="5" required>
-            </div>
-            <div class="bc-estimate-form__field bc-estimate-form__field--full">
-              <label for="<?php echo esc_attr($service_id); ?>">Service Needed *</label>
-              <select id="<?php echo esc_attr($service_id); ?>" name="service" required>
-                <option value="">Select a service</option>
-                <?php foreach ($service_options as $option) : ?>
-                  <option value="<?php echo esc_attr($option); ?>"><?php echo esc_html($option); ?></option>
-                <?php endforeach; ?>
-              </select>
-            </div>
-          </div>
-
-          <p class="bc-estimate-form__micro">We'll review your request and reach out within 24&ndash;48 hours.</p>
-
-          <div id="<?php echo esc_attr($success_id); ?>" class="bc-form-message bc-form-message--success" aria-live="polite"></div>
-          <div id="<?php echo esc_attr($error_id); ?>" class="bc-form-message bc-form-message--error" aria-live="polite"></div>
-
-          <label class="bc-estimate-form__check">
-            <input id="<?php echo esc_attr($policy_id); ?>" type="checkbox" required>
-            <span>I agree to the <a href="/privacy-policy">Privacy Policy</a> and <a href="/terms-and-conditions">Terms &amp; Conditions</a>.</span>
-          </label>
-
-          <button id="<?php echo esc_attr($submit_id); ?>" type="submit" class="bc-btn bc-btn-green bc-magnetic bc-estimate-form__submit">
-            <span>Get My Free Estimate</span>
-          </button>
-        </form>
-      </div>
-      <?php
-      return ob_get_clean();
-    };
 
     // ------------------------------------------------------------
     // SERVICIO ESTRELLA + resto de servicios (rail horizontal)
@@ -219,7 +144,7 @@ get_header(); ?>
       </div>
 
       <div class="bc-fade-in-3">
-        <?php echo $render_estimate_form('bc-home-hero-form', 'dark'); ?>
+        <div class="js-bc-contact-form" data-variant="estimate" data-id="bc-home-hero-form"></div>
       </div>
     </div>
 
@@ -631,7 +556,7 @@ get_header(); ?>
           <a href="mailto:info@bclandscapingaz.com" class="text-sm font-bold text-white/75 underline underline-offset-4">info@bclandscapingaz.com</a>
         </div>
       </div>
-      <div class="bc-reveal-right"><?php echo $render_estimate_form('bc-home-final-form', 'dark'); ?></div>
+      <div class="bc-reveal-right"><div class="js-bc-contact-form" data-variant="estimate" data-id="bc-home-final-form"></div></div>
     </div>
   </section>
 
@@ -932,33 +857,6 @@ get_header(); ?>
   /* ---- Trustindex widget: ancho completo para garantizar las 3 reviews ---- */
   .bc-trustindex-widget{ max-width:100%; margin-left:auto; margin-right:auto; }
 
-  /* ---- Estimate form card ---- */
-  .bc-formcard{ position:relative; overflow:hidden; }
-  .bc-formcard__ornament{ position:absolute; top:-40px; right:-40px; width:180px; height:180px; opacity:.15; transform:rotate(20deg); pointer-events:none; }
-  .bc-estimate-form{ position:relative; border:1px solid rgba(255,255,255,.14); border-radius:8px; background:rgba(255,255,255,.08); box-shadow:0 24px 60px rgba(0,0,0,.20); padding:1.5rem; border-top:3px solid var(--bc-green); }
-  .bc-estimate-form__eyebrow{ margin:0; font-size:.68rem; font-weight:800; letter-spacing:.16em; text-transform:uppercase; color:rgba(255,255,255,.72); }
-  .bc-estimate-form__title{ margin:.5rem 0 0; font-size:1.3rem; font-weight:800; line-height:1.1; letter-spacing:-.02em; color:#fff; }
-  .bc-estimate-form__trust{ margin-top:.6rem; margin-bottom:1rem; font-size:.68rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--bc-green); }
-  .bc-estimate-form__grid{ display:grid; gap:.9rem; grid-template-columns:1fr; }
-  .bc-estimate-form__field{ display:grid; gap:.4rem; } .bc-estimate-form__field--full{ grid-column:1/-1; }
-  .bc-estimate-form__field label{ font-size:.7rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:rgba(255,255,255,.78); }
-  .bc-estimate-form__field input,.bc-estimate-form__field select{ width:100%; min-height:50px; border:1px solid rgba(255,255,255,.16); border-radius:8px; background:rgba(255,255,255,.08); padding:.9rem 1rem; font-size:.95rem; color:#fff; outline:none; transition:border-color .2s ease,background-color .2s ease,box-shadow .2s ease; }
-  .bc-estimate-form__field input::placeholder{ color:rgba(255,255,255,.55); }
-  .bc-estimate-form__field input:focus,.bc-estimate-form__field select:focus{ border-color:var(--bc-green); box-shadow:0 0 0 3px rgba(188,191,96,.22); background:rgba(255,255,255,.12); }
-  .bc-estimate-form__field select option{ color:#2A0111; }
-  .bc-estimate-form__micro{ font-size:.74rem; line-height:1.6; color:rgba(255,255,255,.62); margin-top:.9rem; }
-  .bc-form-message{ display:none; margin-top:.75rem; padding:.9rem 1rem; border:1px solid transparent; border-radius:8px; font-size:.82rem; line-height:1.6; }
-  .bc-form-message.is-visible{ display:block; }
-  .bc-form-message--success{ background:rgba(188,191,96,.14); border-color:rgba(188,191,96,.30); color:#eef0d8; }
-  .bc-form-message--error{ background:rgba(180,55,55,.14); border-color:rgba(180,55,55,.28); color:#ffd7d7; }
-  .js-bc-recaptcha{ margin-top:1rem; }
-  .bc-estimate-form__check{ display:flex; gap:.7rem; margin-top:1rem; font-size:.76rem; line-height:1.6; color:rgba(255,255,255,.76); }
-  .bc-estimate-form__check input{ margin-top:.15rem; accent-color:var(--bc-green); }
-  .bc-estimate-form__check a{ color:var(--bc-mist); text-decoration:underline; }
-  .bc-estimate-form__submit{ width:100%; margin-top:1rem; min-height:54px; }
-  .bc-estimate-form__submit[disabled]{ cursor:not-allowed; opacity:.75; }
-
-  @media (min-width:768px){ .bc-estimate-form__grid{ grid-template-columns:1fr 1fr; } }
 
   @media (prefers-reduced-motion: reduce){
     .bc-reveal-up,.bc-reveal-left,.bc-reveal-right,.bc-reveal-stagger,.bc-swirl-draw,.bc-wipe__img,
@@ -966,9 +864,6 @@ get_header(); ?>
     .bc-pulse-dot,.bc-scroll-cue__line,.bc-testimonial-mark,.bc-tilt{ opacity:1!important; transform:none!important; transition:none!important; animation:none!important; filter:none!important; clip-path:none!important; }
   }
 </style>
-
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script src="https://www.google.com/recaptcha/api.js?render=6Le1SIstAAAAAMpvWWIvOsnq4Jj488h6SmhTffRe"></script>
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
@@ -1149,63 +1044,6 @@ get_header(); ?>
         const wasOpen = item.classList.contains("is-open");
         document.querySelectorAll(".bc-accordion__item").forEach((el) => el.classList.remove("is-open"));
         if (!wasOpen) item.classList.add("is-open");
-      });
-    });
-
-    /* ---------- Estimate forms: validation + EmailJS ---------- */
-    const BC_EMAILJS_SERVICE_ID = "service_g0f8bxk";
-    const BC_EMAILJS_TEMPLATE_ID = "template_vjswkmr";
-    const BC_EMAILJS_AUTOREPLY_TEMPLATE_ID = "template_8omszme";
-    const BC_RECAPTCHA_SITE_KEY = "6Le1SIstAAAAAMpvWWIvOsnq4Jj488h6SmhTffRe";
-
-    if (window.emailjs) emailjs.init({ publicKey: "jouOOfXfhaIpXnqML" });
-
-    document.querySelectorAll(".js-bc-email-form").forEach((form) => {
-      const successBox = document.getElementById(form.dataset.successId);
-      const errorBox = document.getElementById(form.dataset.errorId);
-      const policyCheck = document.getElementById(form.dataset.policyId);
-      const submitBtn = document.getElementById(form.dataset.submitId);
-      if (!successBox || !errorBox || !policyCheck || !submitBtn) return;
-
-      const resetMessages = () => { [successBox, errorBox].forEach((b) => { b.textContent = ""; b.classList.remove("is-visible"); }); };
-      const showSuccess = (msg) => { successBox.textContent = msg; successBox.classList.add("is-visible"); };
-      const showError = (msg) => { errorBox.textContent = msg; errorBox.classList.add("is-visible"); };
-
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        resetMessages();
-        if (!policyCheck.checked) return showError("Please accept the Privacy Policy and Terms & Conditions before submitting.");
-        if (typeof grecaptcha === "undefined") return showError("reCAPTCHA failed to load. Please refresh the page and try again.");
-
-        submitBtn.disabled = true;
-        const originalText = submitBtn.innerHTML;
-        submitBtn.innerHTML = "<span>Sending...</span>";
-
-        const restoreBtn = () => { submitBtn.disabled = false; submitBtn.innerHTML = originalText; };
-
-        grecaptcha.ready(function () {
-          grecaptcha.execute(BC_RECAPTCHA_SITE_KEY, { action: "submit" }).then(function (captchaResponse) {
-            const formData = {
-              name: form.querySelector('input[name="full_name"]').value.trim(),
-              phone: form.querySelector('input[name="phone"]').value.trim(),
-              email: form.querySelector('input[name="email"]').value.trim(),
-              zip: form.querySelector('input[name="zip"]').value.trim(),
-              service: form.querySelector('select[name="service"]').value,
-              "g-recaptcha-response": captchaResponse
-            };
-
-            Promise.all([
-              emailjs.send(BC_EMAILJS_SERVICE_ID, BC_EMAILJS_TEMPLATE_ID, formData),
-              emailjs.send(BC_EMAILJS_SERVICE_ID, BC_EMAILJS_AUTOREPLY_TEMPLATE_ID, formData)
-            ])
-              .then(() => { form.reset(); showSuccess("Thank you. Your request has been sent successfully. We'll be in touch soon."); })
-              .catch(() => showError("Something went wrong while sending your request. Please try again."))
-              .finally(restoreBtn);
-          }).catch(() => {
-            showError("reCAPTCHA verification failed. Please try again.");
-            restoreBtn();
-          });
-        });
       });
     });
   });
