@@ -25,6 +25,48 @@ add_action('after_setup_theme', 'boilerplate_add_support');
 
 
 /**
+ * Google Consent Mode v2: defaults en "denied" hasta que el usuario elija en el
+ * banner de cookies (src/scripts/CookieConsent.js). Si ya eligió antes, se aplica
+ * su preferencia guardada en la cookie "bc_cookie_consent" en el mismo instante.
+ * Prioridad 1 para que salga en el <head> ANTES del snippet de Google Tag Manager.
+ */
+function bc_consent_mode_defaults() {
+  ?>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: 'denied',
+      functionality_storage: 'granted',
+      security_storage: 'granted',
+      wait_for_update: 500
+    });
+    (function () {
+      try {
+        var m = document.cookie.match(/(?:^|; )bc_cookie_consent=([^;]*)/);
+        if (!m) return;
+        var c = JSON.parse(decodeURIComponent(m[1]));
+        if (!c || c.v !== 1) return;
+        var ads = c.marketing ? 'granted' : 'denied';
+        gtag('consent', 'update', {
+          analytics_storage: c.analytics ? 'granted' : 'denied',
+          ad_storage: ads,
+          ad_user_data: ads,
+          ad_personalization: ads
+        });
+      } catch (e) {}
+    })();
+  </script>
+  <?php
+}
+
+add_action('wp_head', 'bc_consent_mode_defaults', 1);
+
+
+/**
  * Floating Call Button, visible en todo el sitio
  */
 function bc_floating_call_button() {

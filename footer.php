@@ -116,10 +116,15 @@
             <a href="/privacy-policy">Privacy Policy</a>
             <span aria-hidden="true">|</span>
             <a href="/terms-and-conditions">Terms &amp; Conditions</a>
+            <span aria-hidden="true">|</span>
+            <button type="button" class="bc-footer__legal-btn js-bc-cookie-settings">Cookie Settings</button>
           </div>
         </div>
       </div>
     </footer>
+
+    <!-- Banner + modal de cookies (src/scripts/CookieConsent.js) -->
+    <div id="bc-cookie-consent"></div>
 
     <?php wp_footer(); ?>
   </body>
