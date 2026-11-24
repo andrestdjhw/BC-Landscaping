@@ -140,7 +140,7 @@ function ContactForm(props) {
 
   function renderPolicyText() {
     return (
-      <span>I agree to the <a href="/privacy-policy">Privacy Policy</a> and <a href="/terms-and-conditions">Terms &amp; Conditions</a>.</span>
+      <span>I agree to the <a href="/privacy-policy/">Privacy Policy</a> and <a href="/terms-and-conditions/">Terms &amp; Conditions</a>.</span>
     )
   }
 

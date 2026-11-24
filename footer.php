@@ -56,23 +56,23 @@
 
         <div class="bc-footer__col">
           <h3>Services</h3>
-          <a href="/services/xeriscaping-desert-design">Xeriscaping &amp; Desert Design</a>
-          <a href="/services/grass-and-turf-installation">Grass &amp; Turf Installation</a>
-          <a href="/services/hardscaping">Hardscaping</a>
-          <a href="/services/irrigation-systems">Irrigation Systems</a>
-          <a href="/services/lightscape-installation">Lightscape Installation</a>
-          <a href="/services/tree-services">Tree Services</a>
-          <a href="/services/lawn-and-garden-maintenance">Lawn &amp; Garden Maintenance</a>
-          <a href="/services/concrete-and-retaining-walls">Concrete &amp; Retaining Walls</a>
+          <a href="<?php echo esc_url(bc_service_url('xeriscaping-desert-design')); ?>">Xeriscaping &amp; Desert Design</a>
+          <a href="<?php echo esc_url(bc_service_url('grass-and-turf-installation')); ?>">Grass &amp; Turf Installation</a>
+          <a href="<?php echo esc_url(bc_service_url('hardscaping')); ?>">Hardscaping</a>
+          <a href="<?php echo esc_url(bc_service_url('irrigation-systems')); ?>">Irrigation Systems</a>
+          <a href="<?php echo esc_url(bc_service_url('lightscape-installation')); ?>">Lightscape Installation</a>
+          <a href="<?php echo esc_url(bc_service_url('tree-services')); ?>">Tree Services</a>
+          <a href="<?php echo esc_url(bc_service_url('lawn-and-garden-maintenance')); ?>">Lawn &amp; Garden Maintenance</a>
+          <a href="<?php echo esc_url(bc_service_url('concrete-and-retaining-walls')); ?>">Concrete &amp; Retaining Walls</a>
         </div>
 
         <div class="bc-footer__col">
           <h3>Helpful Links</h3>
-          <a href="/services">Services</a>
-          <a href="/contact-us">Get an Estimate</a>
-          <a href="/projects">Projects</a>
-          <a href="/locations">Service Areas</a>
-          <a href="/sitemap">Sitemap</a>
+          <a href="<?php echo esc_url(home_url('/#services')); ?>">Services</a>
+          <a href="/contact-us/">Get an Estimate</a>
+          <a href="/projects/">Projects</a>
+          <a href="/locations/">Service Areas</a>
+          <a href="/sitemap/">Sitemap</a>
         </div>
 
         <div class="bc-footer__col">
@@ -111,11 +111,11 @@
             aria-hidden="true"
             class="bc-footer__isotipo"
           >
-          <p class="bc-footer__copyright">&copy; <?php echo esc_html(date('Y')); ?> BC Landscaping &amp; Hardscape, LLC</p>
+          <p class="bc-footer__copyright">&copy; <?php echo esc_html(date('Y')); ?> BC Landscaping &amp; Hardscape, LLC<?php if (bc_roc_label()) : ?> &middot; <?php echo esc_html(bc_roc_label()); ?><?php endif; ?></p>
           <div class="bc-footer__legal">
-            <a href="/privacy-policy">Privacy Policy</a>
+            <a href="/privacy-policy/">Privacy Policy</a>
             <span aria-hidden="true">|</span>
-            <a href="/terms-and-conditions">Terms &amp; Conditions</a>
+            <a href="/terms-and-conditions/">Terms &amp; Conditions</a>
             <span aria-hidden="true">|</span>
             <button type="button" class="bc-footer__legal-btn js-bc-cookie-settings">Cookie Settings</button>
           </div>

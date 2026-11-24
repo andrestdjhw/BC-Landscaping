@@ -73,7 +73,7 @@ get_header(); ?>
         <div class="js-bc-contact-form" data-variant="contact" data-id="bc-contact-form"></div>
 
         <p class="relative z-10 mt-5 text-center text-[13px] text-[#2A0111]/60">
-          Looking for a project quote instead? <a href="/contact-us" class="font-bold text-[#117682] underline underline-offset-2">Get an Estimate &rarr;</a>
+          Looking for a project quote instead? <a href="/contact-us/" class="font-bold text-[#117682] underline underline-offset-2">Get an Estimate &rarr;</a>
         </p>
       </div>
 
@@ -218,7 +218,7 @@ get_header(); ?>
         protect your property&rsquo;s value and eliminate the worry.
       </p>
       <div class="bc-reveal-up mt-8 flex flex-wrap items-center justify-center gap-3">
-        <a href="/contact-us" class="bc-btn bc-btn-green bc-magnetic inline-flex items-center justify-center px-8 py-4 text-sm font-black uppercase tracking-[0.14em]"><span>Get an Estimate</span></a>
+        <a href="/contact-us/" class="bc-btn bc-btn-green bc-magnetic inline-flex items-center justify-center px-8 py-4 text-sm font-black uppercase tracking-[0.14em]"><span>Get an Estimate</span></a>
       </div>
     </div>
   </section>

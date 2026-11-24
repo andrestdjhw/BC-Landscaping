@@ -25,6 +25,120 @@ add_action('after_setup_theme', 'boilerplate_add_support');
 
 
 /**
+ * UpdraftPlus: no respaldar node_modules del theme (solo dependencias de
+ * desarrollo, se recrea con "npm install"). Va por filtro y no por un archivo
+ * .donotbackup porque "npm ci" borra y recrea la carpeta completa.
+ */
+function bc_updraft_exclude_node_modules($exclude, $fullpath) {
+  $theme_dir = wp_normalize_path(get_stylesheet_directory());
+  $fullpath  = wp_normalize_path($fullpath);
+  if (basename($fullpath) === 'node_modules' && strpos($fullpath, $theme_dir . '/') === 0) {
+    return true;
+  }
+  return $exclude;
+}
+
+add_filter('updraftplus_exclude_directory', 'bc_updraft_exclude_node_modules', 10, 2);
+
+
+/**
+ * Licencia ROC (Arizona Registrar of Contractors). Mientras esté vacío no se
+ * muestra nada; al llenarlo aparece en la Home (hero) y en el footer como
+ * "BC Landscaping & Hardscape, LLC · ROC #XXXXXX". Solo el número, sin "#".
+ */
+define('BC_ROC_NUMBER', '');
+
+function bc_roc_label() {
+  return BC_ROC_NUMBER !== '' ? 'ROC #' . BC_ROC_NUMBER : '';
+}
+
+
+/**
+ * Servicios: slugs "limpios" (sin "-2"). Fuente única para menú, footer, home,
+ * sitemap y ServiceTemplate.php.
+ */
+function bc_service_slugs() {
+  return array(
+    'xeriscaping-desert-design',
+    'grass-and-turf-installation',
+    'hardscaping',
+    'irrigation-systems',
+    'lightscape-installation',
+    'tree-services',
+    'lawn-and-garden-maintenance',
+    'concrete-and-retaining-walls',
+  );
+}
+
+/**
+ * URL real de un servicio. Busca la página por su slug limpio y, si no existe,
+ * por "slug-2" (WordPress agregó "-2" a Irrigation y Lightscape porque ese slug
+ * ya lo usaba una imagen de la Media Library). Si mañana se renombra el slug en
+ * WP Admin, todos los enlaces lo siguen solos.
+ */
+function bc_service_url($slug) {
+  static $cache = array();
+  if (isset($cache[$slug])) return $cache[$slug];
+
+  foreach (array($slug, $slug . '-2') as $candidate) {
+    $page = get_page_by_path($candidate, OBJECT, 'page');
+    if ($page && $page->post_status === 'publish') {
+      return $cache[$slug] = get_permalink($page);
+    }
+  }
+  return $cache[$slug] = home_url('/' . $slug . '/');
+}
+
+/**
+ * Redirecciones 301 de URLs viejas o rotas:
+ *  - /estimate                       -> /contact-us/
+ *  - /services                       -> /#services (sección de servicios de la Home)
+ *  - /services/{slug}, /{slug}-2,
+ *    /{slug} cuando es una imagen    -> la página real del servicio
+ * Prioridad 1: corre antes de redirect_canonical, que mandaba /irrigation-systems
+ * directo al archivo .webp de la imagen.
+ */
+function bc_legacy_redirects() {
+  if (is_admin()) return;
+
+  $request = trim((string) wp_parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH), '/');
+  $home    = trim((string) wp_parse_url(home_url('/'), PHP_URL_PATH), '/');
+  if ($home !== '' && strpos($request, $home . '/') === 0) {
+    $request = substr($request, strlen($home) + 1);
+  }
+  $request = strtolower($request);
+
+  $target = null;
+  if ($request === 'estimate') {
+    $target = home_url('/contact-us/');
+  } elseif ($request === 'services') {
+    $target = home_url('/#services');
+  } else {
+    $path = preg_replace('#^services/#', '', $request);
+    $base = preg_replace('#-2$#', '', $path);
+    if (in_array($base, bc_service_slugs(), true)) {
+      $url = bc_service_url($base);
+      $url_path = strtolower(trim((string) wp_parse_url($url, PHP_URL_PATH), '/'));
+      if ($home !== '' && strpos($url_path, $home . '/') === 0) {
+        $url_path = substr($url_path, strlen($home) + 1);
+      }
+      // solo si la página existe y no estamos ya en ella (evita loops)
+      if ($url_path !== $request && get_page_by_path($url_path, OBJECT, 'page')) {
+        $target = $url;
+      }
+    }
+  }
+
+  if ($target) {
+    wp_safe_redirect($target, 301);
+    exit;
+  }
+}
+
+add_action('template_redirect', 'bc_legacy_redirects', 1);
+
+
+/**
  * Google Consent Mode v2: defaults en "denied" hasta que el usuario elija en el
  * banner de cookies (src/scripts/CookieConsent.js). Si ya eligió antes, se aplica
  * su preferencia guardada en la cookie "bc_cookie_consent" en el mismo instante.

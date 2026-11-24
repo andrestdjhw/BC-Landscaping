@@ -36,18 +36,18 @@ get_header(); ?>
     $xeriscaping = [
       'title' => 'Xeriscaping &amp; Desert Design',
       'copy'  => 'Native, water-wise landscapes that cut your water bill and stay HOA-compliant. It&rsquo;s the specialty BC was built on, desert-smart beauty that thrives through Arizona&rsquo;s harshest summers.',
-      'link'  => '/services/xeriscaping-desert-design',
+      'link'  => bc_service_url('xeriscaping-desert-design'),
       'image' => '/wp-content/uploads/2026/07/IMAGE-P2-Backyard-remodel-in-Tempe-Az-Grading-turf-and-gravel-19.jpg',
     ];
 
     $more_services = [
-      ['title' => 'Grass &amp; Turf', 'copy' => 'Natural and synthetic turf engineered for Arizona heat.', 'link' => '/services/grass-and-turf-installation', 'image' => '/wp-content/uploads/2026/07/IMAGE-P6-Front-yard-removed-sod-and-installed-turf-5.webp', 'icon' => null, 'tone' => '#BCBF60'],
-      ['title' => 'Hardscaping', 'copy' => 'Pavers, patios, and walkways built to live in.', 'link' => '/services/hardscaping', 'image' => '/wp-content/uploads/2026/07/IMAGE-P4-Ficus-columns-and-turf-11.webp', 'icon' => $icon_hardscape, 'tone' => '#8B0333'],
-      ['title' => 'Irrigation Systems', 'copy' => 'Efficient design, install, and repair that cut waste.', 'link' => '/services/irrigation-systems', 'image' => '/wp-content/uploads/2026/07/Irrigation-Systems.webp', 'icon' => null, 'tone' => '#84CAC9'],
-      ['title' => 'Lightscape', 'copy' => 'Premium LED lighting for patios, paths, and gardens.', 'link' => '/services/lightscape-installation', 'image' => '/wp-content/uploads/2026/07/Lightscape-installation.webp', 'icon' => $icon_lightscape, 'tone' => '#117682'],
-      ['title' => 'Tree Services', 'copy' => 'Pruning, removal, and planting that protect curb appeal.', 'link' => '/services/tree-services', 'image' => '/wp-content/uploads/2026/07/IMAGE-P4-Ficus-columns-and-turf-6.webp', 'icon' => $icon_arboles, 'tone' => '#117682'],
-      ['title' => 'Lawn &amp; Garden', 'copy' => 'Scheduled care that keeps every yard inspection-ready.', 'link' => '/services/lawn-and-garden-maintenance', 'image' => '/wp-content/uploads/2026/07/IMAGE-P9-Yard-clean-up-27.jpg', 'icon' => $icon_limpieza, 'tone' => '#BCBF60'],
-      ['title' => 'Concrete &amp; Walls', 'copy' => 'Durable structures that manage drainage and last for years.', 'link' => '/services/concrete-and-retaining-walls', 'image' => '/wp-content/uploads/2026/07/Retaining-Walls.webp', 'icon' => $icon_concreto, 'tone' => '#8B0333'],
+      ['title' => 'Grass &amp; Turf', 'copy' => 'Natural and synthetic turf engineered for Arizona heat.', 'link' => bc_service_url('grass-and-turf-installation'), 'image' => '/wp-content/uploads/2026/07/IMAGE-P6-Front-yard-removed-sod-and-installed-turf-5.webp', 'icon' => null, 'tone' => '#BCBF60'],
+      ['title' => 'Hardscaping', 'copy' => 'Pavers, patios, and walkways built to live in.', 'link' => bc_service_url('hardscaping'), 'image' => '/wp-content/uploads/2026/07/IMAGE-P4-Ficus-columns-and-turf-11.webp', 'icon' => $icon_hardscape, 'tone' => '#8B0333'],
+      ['title' => 'Irrigation Systems', 'copy' => 'Efficient design, install, and repair that cut waste.', 'link' => bc_service_url('irrigation-systems'), 'image' => '/wp-content/uploads/2026/07/Irrigation-Systems.webp', 'icon' => null, 'tone' => '#84CAC9'],
+      ['title' => 'Lightscape', 'copy' => 'Premium LED lighting for patios, paths, and gardens.', 'link' => bc_service_url('lightscape-installation'), 'image' => '/wp-content/uploads/2026/07/Lightscape-installation.webp', 'icon' => $icon_lightscape, 'tone' => '#117682'],
+      ['title' => 'Tree Services', 'copy' => 'Pruning, removal, and planting that protect curb appeal.', 'link' => bc_service_url('tree-services'), 'image' => '/wp-content/uploads/2026/07/IMAGE-P4-Ficus-columns-and-turf-6.webp', 'icon' => $icon_arboles, 'tone' => '#117682'],
+      ['title' => 'Lawn &amp; Garden', 'copy' => 'Scheduled care that keeps every yard inspection-ready.', 'link' => bc_service_url('lawn-and-garden-maintenance'), 'image' => '/wp-content/uploads/2026/07/IMAGE-P9-Yard-clean-up-27.jpg', 'icon' => $icon_limpieza, 'tone' => '#BCBF60'],
+      ['title' => 'Concrete &amp; Walls', 'copy' => 'Durable structures that manage drainage and last for years.', 'link' => bc_service_url('concrete-and-retaining-walls'), 'image' => '/wp-content/uploads/2026/07/Retaining-Walls.webp', 'icon' => $icon_concreto, 'tone' => '#8B0333'],
     ];
 
     $stats = [
@@ -130,8 +130,8 @@ get_header(); ?>
         </p>
 
         <div class="bc-fade-in-3 bc-cursor-glow mt-10 flex flex-col gap-4 sm:flex-row lg:justify-start">
-          <a href="/estimate" class="bc-btn bc-btn-green bc-magnetic inline-flex items-center justify-center px-8 py-4 text-sm font-black uppercase tracking-[0.14em]"><span>Get a Free Estimate</span></a>
-          <a href="/projects" class="bc-btn bc-btn-outline bc-magnetic inline-flex items-center justify-center px-8 py-4 text-sm font-black uppercase tracking-[0.14em] text-white"><span>See Our Work</span></a>
+          <a href="/contact-us/" class="bc-btn bc-btn-green bc-magnetic inline-flex items-center justify-center px-8 py-4 text-sm font-black uppercase tracking-[0.14em]"><span>Get a Free Estimate</span></a>
+          <a href="/projects/" class="bc-btn bc-btn-outline bc-magnetic inline-flex items-center justify-center px-8 py-4 text-sm font-black uppercase tracking-[0.14em] text-white"><span>See Our Work</span></a>
         </div>
 
         <div class="bc-fade-in-4 mt-8 inline-flex flex-wrap items-center gap-4 lg:justify-start">
@@ -141,6 +141,12 @@ get_header(); ?>
           </a>
           <span class="bc-hero-chip">★★★★★ <strong>4.9</strong> Google Rating</span>
         </div>
+
+        <?php if (bc_roc_label()) : ?>
+          <p class="bc-fade-in-4 mt-5 text-xs font-bold uppercase tracking-[0.16em] text-white/80">
+            BC Landscaping &amp; Hardscape, LLC <span class="text-[#BCBF60]">&middot;</span> <?php echo esc_html(bc_roc_label()); ?>
+          </p>
+        <?php endif; ?>
       </div>
 
       <div class="bc-fade-in-3">
@@ -201,7 +207,7 @@ get_header(); ?>
               Hardscape handles it all in-house: xeriscaping, hardscaping, irrigation, lighting, trees, and
               maintenance, so your property stays compliant, beautiful, and worth more, season after season.
             </p>
-            <a href="/about-us" class="mt-6 inline-flex items-center gap-2 border-b-2 border-[#117682] pb-1 text-sm font-black uppercase tracking-[0.12em] text-[#117682] transition hover:gap-3">
+            <a href="/about-us/" class="mt-6 inline-flex items-center gap-2 border-b-2 border-[#117682] pb-1 text-sm font-black uppercase tracking-[0.12em] text-[#117682] transition hover:gap-3">
               Learn Our Story <span>&rarr;</span>
             </a>
           </div>
@@ -417,7 +423,7 @@ get_header(); ?>
     </div>
 
     <div class="mx-auto mt-8 max-w-7xl px-4 text-center">
-      <a href="/projects" class="bc-btn bc-btn-dark bc-magnetic inline-flex items-center justify-center px-6 py-4 text-sm font-black uppercase tracking-[0.14em] text-white"><span>View All Projects &rarr;</span></a>
+      <a href="/projects/" class="bc-btn bc-btn-dark bc-magnetic inline-flex items-center justify-center px-6 py-4 text-sm font-black uppercase tracking-[0.14em] text-white"><span>View All Projects &rarr;</span></a>
     </div>
   </section>
 
@@ -498,7 +504,7 @@ get_header(); ?>
           years later, that promise still drives every project: real craftsmanship, an in-house team you can
           count on, and outdoor spaces built to last. That&rsquo;s what Quality with Purpose means to us.
         </p>
-        <a href="/about-us" class="bc-btn bc-btn-green bc-magnetic mt-8 inline-flex items-center justify-center px-8 py-4 text-sm font-black uppercase tracking-[0.14em]"><span>Read Our Full Story</span></a>
+        <a href="/about-us/" class="bc-btn bc-btn-green bc-magnetic mt-8 inline-flex items-center justify-center px-8 py-4 text-sm font-black uppercase tracking-[0.14em]"><span>Read Our Full Story</span></a>
       </div>
     </div>
   </section>

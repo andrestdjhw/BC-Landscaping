@@ -30,11 +30,11 @@ get_header(); ?>
         'icon'  => '<path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/>',
         'links' => [
           ['label' => 'Home', 'href' => '/'],
-          ['label' => 'About Us', 'href' => '/about-us'],
-          ['label' => 'All Services', 'href' => '/services'],
-          ['label' => 'Projects', 'href' => '/projects'],
-          ['label' => 'Service Areas', 'href' => '/locations'],
-          ['label' => 'Contact Us', 'href' => '/contact-us'],
+          ['label' => 'About Us', 'href' => '/about-us/'],
+          ['label' => 'All Services', 'href' => home_url('/#services')],
+          ['label' => 'Projects', 'href' => '/projects/'],
+          ['label' => 'Service Areas', 'href' => '/locations/'],
+          ['label' => 'Contact Us', 'href' => '/contact-us/'],
         ],
       ],
       [
@@ -42,14 +42,14 @@ get_header(); ?>
         'tone'  => '#8B0333',
         'icon'  => '<path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11Z"/>',
         'links' => [
-          ['label' => 'Xeriscaping &amp; Desert Design', 'href' => '/services/xeriscaping-desert-design'],
-          ['label' => 'Grass &amp; Turf Installation', 'href' => '/services/grass-and-turf-installation'],
-          ['label' => 'Hardscaping', 'href' => '/services/hardscaping'],
-          ['label' => 'Irrigation Systems', 'href' => '/services/irrigation-systems-2'],
-          ['label' => 'Lightscape Installation', 'href' => '/services/lightscape-installation-2'],
-          ['label' => 'Tree Services', 'href' => '/services/tree-services'],
-          ['label' => 'Lawn &amp; Garden Maintenance', 'href' => '/services/lawn-and-garden-maintenance'],
-          ['label' => 'Concrete &amp; Retaining Walls', 'href' => '/services/concrete-and-retaining-walls'],
+          ['label' => 'Xeriscaping &amp; Desert Design', 'href' => bc_service_url('xeriscaping-desert-design')],
+          ['label' => 'Grass &amp; Turf Installation', 'href' => bc_service_url('grass-and-turf-installation')],
+          ['label' => 'Hardscaping', 'href' => bc_service_url('hardscaping')],
+          ['label' => 'Irrigation Systems', 'href' => bc_service_url('irrigation-systems')],
+          ['label' => 'Lightscape Installation', 'href' => bc_service_url('lightscape-installation')],
+          ['label' => 'Tree Services', 'href' => bc_service_url('tree-services')],
+          ['label' => 'Lawn &amp; Garden Maintenance', 'href' => bc_service_url('lawn-and-garden-maintenance')],
+          ['label' => 'Concrete &amp; Retaining Walls', 'href' => bc_service_url('concrete-and-retaining-walls')],
         ],
       ],
       [
@@ -57,17 +57,17 @@ get_header(); ?>
         'tone'  => '#BCBF60',
         'icon'  => '<path d="M12 21.5s7-6.4 7-11.7A7 7 0 0 0 5 9.8c0 5.3 7 11.7 7 11.7Z"/><circle cx="12" cy="9.8" r="2.4"/>',
         'links' => [
-          ['label' => 'Phoenix, AZ', 'href' => '/locations#area-phoenix-az'],
-          ['label' => 'Scottsdale, AZ', 'href' => '/locations#area-scottsdale-az'],
-          ['label' => 'Paradise Valley, AZ', 'href' => '/locations#area-paradise-valley-az'],
-          ['label' => 'Tempe, AZ', 'href' => '/locations#area-tempe-az'],
-          ['label' => 'Mesa, AZ', 'href' => '/locations#area-mesa-az'],
-          ['label' => 'Gilbert, AZ', 'href' => '/locations#area-gilbert-az'],
-          ['label' => 'Goodyear, AZ', 'href' => '/locations#area-goodyear-az'],
-          ['label' => 'Waddell, AZ', 'href' => '/locations#area-waddell-az'],
-          ['label' => 'Fountain Hills, AZ', 'href' => '/locations#area-fountain-hills-az'],
-          ['label' => 'Rio Verde, AZ', 'href' => '/locations#area-rio-verde-az'],
-          ['label' => 'Arcadia, AZ', 'href' => '/locations#area-arcadia-az'],
+          ['label' => 'Phoenix, AZ', 'href' => '/locations/#area-phoenix-az'],
+          ['label' => 'Scottsdale, AZ', 'href' => '/locations/#area-scottsdale-az'],
+          ['label' => 'Paradise Valley, AZ', 'href' => '/locations/#area-paradise-valley-az'],
+          ['label' => 'Tempe, AZ', 'href' => '/locations/#area-tempe-az'],
+          ['label' => 'Mesa, AZ', 'href' => '/locations/#area-mesa-az'],
+          ['label' => 'Gilbert, AZ', 'href' => '/locations/#area-gilbert-az'],
+          ['label' => 'Goodyear, AZ', 'href' => '/locations/#area-goodyear-az'],
+          ['label' => 'Waddell, AZ', 'href' => '/locations/#area-waddell-az'],
+          ['label' => 'Fountain Hills, AZ', 'href' => '/locations/#area-fountain-hills-az'],
+          ['label' => 'Rio Verde, AZ', 'href' => '/locations/#area-rio-verde-az'],
+          ['label' => 'Arcadia, AZ', 'href' => '/locations/#area-arcadia-az'],
         ],
       ],
       [
@@ -75,9 +75,9 @@ get_header(); ?>
         'tone'  => '#84CAC9',
         'icon'  => '<rect x="5" y="3" width="14" height="18" rx="1.5"/><path d="M9 8h6M9 12h6M9 16h3"/>',
         'links' => [
-          ['label' => 'Privacy Policy', 'href' => '/privacy-policy'],
-          ['label' => 'Terms &amp; Conditions', 'href' => '/terms-and-conditions'],
-          ['label' => 'Sitemap', 'href' => '/sitemap'],
+          ['label' => 'Privacy Policy', 'href' => '/privacy-policy/'],
+          ['label' => 'Terms &amp; Conditions', 'href' => '/terms-and-conditions/'],
+          ['label' => 'Sitemap', 'href' => '/sitemap/'],
         ],
       ],
     ];
@@ -163,7 +163,7 @@ get_header(); ?>
         or send us a message.
       </p>
       <div class="bc-reveal-up mt-8 flex flex-wrap items-center justify-center gap-3">
-        <a href="/contact-us" class="bc-btn bc-btn-green bc-magnetic inline-flex items-center justify-center px-8 py-4 text-sm font-black uppercase tracking-[0.14em]"><span>Contact Us</span></a>
+        <a href="/contact-us/" class="bc-btn bc-btn-green bc-magnetic inline-flex items-center justify-center px-8 py-4 text-sm font-black uppercase tracking-[0.14em]"><span>Contact Us</span></a>
       </div>
     </div>
   </section>

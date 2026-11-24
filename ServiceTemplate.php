@@ -72,7 +72,7 @@ get_header(); ?>
         'gallery'   => ['/wp-content/uploads/2026/07/IMAGE-P1-Backyard-remodel-in-Peoria-Az-40.webp', '/wp-content/uploads/2026/07/IMAGE-BA-5-2.webp'],
       ],
 
-      'irrigation-systems-2' => [
+      'irrigation-systems' => [
         'title'     => 'Irrigation Systems',
         'signature' => false,
         'benefit'   => 'Efficient design, installation, and repair that cut waste and lower your bills.',
@@ -85,7 +85,7 @@ get_header(); ?>
         'gallery'   => [],
       ],
 
-      'lightscape-installation-2' => [
+      'lightscape-installation' => [
         'title'     => 'Lightscape Installation',
         'signature' => false,
         'benefit'   => 'Premium LED lighting that brings patios, paths, and gardens to life after dark.',
@@ -147,6 +147,10 @@ get_header(); ?>
     // RESOLVER, qué servicio mostrar según el slug de la página
     // ------------------------------------------------------------
     $current_slug = get_post_field('post_name');
+    // "irrigation-systems-2" -> "irrigation-systems" (el "-2" lo puso WordPress por un choque de slug)
+    if (!isset($services[$current_slug])) {
+      $current_slug = preg_replace('/-\d+$/', '', $current_slug);
+    }
     if (!isset($services[$current_slug])) {
       $current_slug = 'xeriscaping-desert-design'; // fallback de seguridad
     }
@@ -199,7 +203,7 @@ get_header(); ?>
         <p class="bc-fade-in-2 mx-auto mt-6 max-w-lg text-base leading-7 text-white/75 lg:mx-0 md:text-lg"><?php echo $service['benefit']; ?></p>
 
         <div class="bc-fade-in-3 mt-9 flex flex-wrap items-center justify-center gap-4 lg:justify-start">
-          <a href="/contact-us" class="bc-btn bc-btn-green bc-magnetic inline-flex items-center justify-center px-8 py-4 text-sm font-black uppercase tracking-[0.14em]"><span>Get a Free Estimate</span></a>
+          <a href="/contact-us/" class="bc-btn bc-btn-green bc-magnetic inline-flex items-center justify-center px-8 py-4 text-sm font-black uppercase tracking-[0.14em]"><span>Get a Free Estimate</span></a>
           <a href="tel:+14802294950" class="text-sm font-bold text-white/75">Call (480) 229-4950</a>
         </div>
       </div>
@@ -241,7 +245,7 @@ get_header(); ?>
           <p class="<?php echo $idx === 0 ? 'mt-5 text-lg leading-8 text-[#2A0111]/85' : 'mt-4 text-base leading-7 text-[#2A0111]/72'; ?>"><?php echo $para; ?></p>
         <?php endforeach; ?>
 
-        <a href="/contact-us" class="mt-6 inline-flex items-center gap-2 text-sm font-black uppercase tracking-[0.12em] text-[#117682] transition hover:gap-3">
+        <a href="/contact-us/" class="mt-6 inline-flex items-center gap-2 text-sm font-black uppercase tracking-[0.12em] text-[#117682] transition hover:gap-3">
           Get Your Free Estimate <span>&rarr;</span>
         </a>
       </div>
@@ -381,7 +385,7 @@ get_header(); ?>
           <?php endforeach; ?>
         </ul>
 
-        <a href="/projects" class="mt-8 inline-flex items-center gap-2 border border-[#2A0111]/15 px-7 py-3.5 text-sm font-black uppercase tracking-[0.12em] text-[#2A0111] transition hover:border-[#117682] hover:text-[#117682]">
+        <a href="/projects/" class="mt-8 inline-flex items-center gap-2 border border-[#2A0111]/15 px-7 py-3.5 text-sm font-black uppercase tracking-[0.12em] text-[#2A0111] transition hover:border-[#117682] hover:text-[#117682]">
           View All Projects <span>&rarr;</span>
         </a>
       </div>
@@ -423,7 +427,7 @@ get_header(); ?>
           $tone_cycle = ['#117682', '#8B0333', '#BCBF60', '#2A0111'][array_search($slug, array_keys($related)) % 4];
           $card_icon = !empty($item['icon']) ? $item['icon'] : $isotipo;
         ?>
-          <a href="/services/<?php echo esc_attr($slug); ?>" class="bc-related-card bc-tilt group relative overflow-hidden bg-white" style="--bc-related-tone: <?php echo esc_attr($tone_cycle); ?>;">
+          <a href="<?php echo esc_url(bc_service_url($slug)); ?>" class="bc-related-card bc-tilt group relative overflow-hidden bg-white" style="--bc-related-tone: <?php echo esc_attr($tone_cycle); ?>;">
             <div class="bc-wipe relative h-[150px] overflow-hidden">
               <img src="<?php echo esc_url($item['hero']); ?>" alt="<?php echo esc_attr(wp_strip_all_tags($item['title'])); ?>, BC Landscaping & Hardscape" class="bc-wipe__img h-full w-full object-cover transition duration-700 group-hover:scale-[1.08]" loading="lazy">
               <span class="bc-related-card__tint" aria-hidden="true"></span>
@@ -493,7 +497,7 @@ get_header(); ?>
         Get a free, no-pressure estimate from the team Maricopa trusts for compliant, lasting outdoor work.
       </p>
       <div class="bc-reveal-up mt-8 flex flex-wrap items-center justify-center gap-3">
-        <a href="/contact-us" class="bc-btn bc-btn-green bc-magnetic inline-flex items-center justify-center px-8 py-4 text-sm font-black uppercase tracking-[0.14em]"><span>Get an Estimate</span></a>
+        <a href="/contact-us/" class="bc-btn bc-btn-green bc-magnetic inline-flex items-center justify-center px-8 py-4 text-sm font-black uppercase tracking-[0.14em]"><span>Get an Estimate</span></a>
         <a href="tel:+14802294950" class="bc-btn bc-btn-outline bc-magnetic inline-flex items-center justify-center px-8 py-4 text-sm font-black uppercase tracking-[0.14em] text-white"><span>Call (480) 229-4950</span></a>
       </div>
     </div>

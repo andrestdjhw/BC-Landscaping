@@ -128,7 +128,7 @@
           <nav class="bc-desktop-nav" aria-label="Primary navigation">
             <ul class="bc-menu">
               <li><a href="/">Home</a></li>
-              <li><a href="/about-us">About Us</a></li>
+              <li><a href="/about-us/">About Us</a></li>
 
               <li class="bc-menu-item-has-children js-bc-dropdown">
                 <button class="bc-menu__toggle js-bc-dropdown-toggle" type="button" aria-expanded="false">
@@ -137,23 +137,23 @@
                 </button>
 
                 <div class="bc-dropdown">
-                  <a href="/services/xeriscaping-desert-design" class="bc-dropdown__signature">
+                  <a href="<?php echo esc_url(bc_service_url('xeriscaping-desert-design')); ?>" class="bc-dropdown__signature">
                     Xeriscaping &amp; Desert Design
                     <span class="bc-dropdown__signature-tag">Signature</span>
                   </a>
-                  <a href="/services/grass-and-turf-installation">Grass &amp; Turf Installation</a>
-                  <a href="/services/hardscaping">Hardscaping</a>
-                  <a href="/services/irrigation-systems-2">Irrigation Systems</a>
-                  <a href="/services/lightscape-installation-2">Lightscape Installation</a>
-                  <a href="/services/tree-services">Tree Services</a>
-                  <a href="/services/lawn-and-garden-maintenance">Lawn &amp; Garden Maintenance</a>
-                  <a href="/services/concrete-and-retaining-walls">Concrete &amp; Retaining Walls</a>
+                  <a href="<?php echo esc_url(bc_service_url('grass-and-turf-installation')); ?>">Grass &amp; Turf Installation</a>
+                  <a href="<?php echo esc_url(bc_service_url('hardscaping')); ?>">Hardscaping</a>
+                  <a href="<?php echo esc_url(bc_service_url('irrigation-systems')); ?>">Irrigation Systems</a>
+                  <a href="<?php echo esc_url(bc_service_url('lightscape-installation')); ?>">Lightscape Installation</a>
+                  <a href="<?php echo esc_url(bc_service_url('tree-services')); ?>">Tree Services</a>
+                  <a href="<?php echo esc_url(bc_service_url('lawn-and-garden-maintenance')); ?>">Lawn &amp; Garden Maintenance</a>
+                  <a href="<?php echo esc_url(bc_service_url('concrete-and-retaining-walls')); ?>">Concrete &amp; Retaining Walls</a>
                 </div>
               </li>
 
-              <li><a href="/projects">Projects</a></li>
-              <li><a href="/locations">Service Areas</a></li>
-              <li><a href="/contact-us">Contact Us</a></li>
+              <li><a href="/projects/">Projects</a></li>
+              <li><a href="/locations/">Service Areas</a></li>
+              <li><a href="/contact-us/">Contact Us</a></li>
             </ul>
           </nav>
 
@@ -161,7 +161,7 @@
             <a href="tel:+14802294950" class="bc-nav-call">
               <span class="bc-nav-call__dot"></span>Call Now
             </a>
-            <a href="/contact-us" class="bc-btn bc-btn--primary">Get an Estimate</a>
+            <a href="/contact-us/" class="bc-btn bc-btn--primary">Get an Estimate</a>
           </div>
         </div>
 
@@ -169,7 +169,7 @@
           <div class="bc-shell">
             <nav class="bc-mobile-nav" aria-label="Mobile navigation">
               <a href="/">Home</a>
-              <a href="/about-us">About Us</a>
+              <a href="/about-us/">About Us</a>
 
               <div class="bc-mobile-group js-bc-mobile-group">
                 <button class="bc-mobile-group__toggle js-bc-mobile-group-toggle" type="button" aria-expanded="false">
@@ -177,25 +177,25 @@
                   <span class="bc-caret"></span>
                 </button>
                 <div class="bc-mobile-group__panel">
-                  <a href="/services/xeriscaping-desert-design" class="bc-dropdown__signature">
+                  <a href="<?php echo esc_url(bc_service_url('xeriscaping-desert-design')); ?>" class="bc-dropdown__signature">
                     Xeriscaping &amp; Desert Design
                     <span class="bc-dropdown__signature-tag">Signature</span>
                   </a>
-                  <a href="/services/grass-and-turf-installation">Grass &amp; Turf Installation</a>
-                  <a href="/services/hardscaping">Hardscaping</a>
-                  <a href="/services/irrigation-systems">Irrigation Systems</a>
-                  <a href="/services/lightscape-installation">Lightscape Installation</a>
-                  <a href="/services/tree-services">Tree Services</a>
-                  <a href="/services/lawn-and-garden-maintenance">Lawn &amp; Garden Maintenance</a>
-                  <a href="/services/concrete-and-retaining-walls">Concrete &amp; Retaining Walls</a>
+                  <a href="<?php echo esc_url(bc_service_url('grass-and-turf-installation')); ?>">Grass &amp; Turf Installation</a>
+                  <a href="<?php echo esc_url(bc_service_url('hardscaping')); ?>">Hardscaping</a>
+                  <a href="<?php echo esc_url(bc_service_url('irrigation-systems')); ?>">Irrigation Systems</a>
+                  <a href="<?php echo esc_url(bc_service_url('lightscape-installation')); ?>">Lightscape Installation</a>
+                  <a href="<?php echo esc_url(bc_service_url('tree-services')); ?>">Tree Services</a>
+                  <a href="<?php echo esc_url(bc_service_url('lawn-and-garden-maintenance')); ?>">Lawn &amp; Garden Maintenance</a>
+                  <a href="<?php echo esc_url(bc_service_url('concrete-and-retaining-walls')); ?>">Concrete &amp; Retaining Walls</a>
                 </div>
               </div>
 
-              <a href="/projects">Projects</a>
-              <a href="/locations">Service Areas</a>
-              <a href="/contact-us">Contact Us</a>
+              <a href="/projects/">Projects</a>
+              <a href="/locations/">Service Areas</a>
+              <a href="/contact-us/">Contact Us</a>
 
-              <a href="/contact-us" class="bc-btn bc-btn--primary bc-mobile-nav__cta">
+              <a href="/contact-us/" class="bc-btn bc-btn--primary bc-mobile-nav__cta">
                 Get a Free Estimate
               </a>
             </nav>

@@ -224,7 +224,7 @@ function CookieConsent() {
           <p className="bc-cookie-banner__text">
             We use cookies to keep our site working, understand how it&rsquo;s used, and measure our marketing.
             You can accept all cookies, reject non-essential ones, or choose your preferences.{" "}
-            <a href="/privacy-policy">Privacy Policy</a>
+            <a href="/privacy-policy/">Privacy Policy</a>
           </p>
           <div className="bc-cookie-banner__actions">
             <button type="button" className="bc-cookie-btn bc-cookie-btn--link" onClick={openModal}>
@@ -267,7 +267,7 @@ function CookieConsent() {
               <p id="bc-cookie-modal-intro" className="bc-cookie-modal__intro">
                 Choose which cookies you allow. You can change these settings at any time from the
                 &ldquo;Cookie Settings&rdquo; link in the footer. Learn more in our{" "}
-                <a href="/privacy-policy">Privacy Policy</a>.
+                <a href="/privacy-policy/">Privacy Policy</a>.
               </p>
               <ul className="bc-cookie-cats">
                 {CATEGORIES.map(renderCategory)}

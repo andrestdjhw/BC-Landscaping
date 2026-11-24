@@ -99,7 +99,7 @@ get_header(); ?>
         </p>
 
         <div class="bc-fade-up-delay bc-fade-up-delay--2 mt-9 flex flex-wrap items-center gap-5">
-          <a href="/contact-us" class="bc-btn bc-btn-green bc-magnetic inline-flex items-center justify-center px-8 py-4 text-sm font-black uppercase tracking-[0.14em]"><span>Get a Free Estimate</span></a>
+          <a href="/contact-us/" class="bc-btn bc-btn-green bc-magnetic inline-flex items-center justify-center px-8 py-4 text-sm font-black uppercase tracking-[0.14em]"><span>Get a Free Estimate</span></a>
           <a href="tel:+14802294950" class="text-sm font-bold text-[#2A0111]/70">Call (480) 229-4950</a>
         </div>
       </div>
@@ -359,7 +359,7 @@ get_header(); ?>
         protect your property&rsquo;s value and eliminate the worry.
       </p>
       <div class="bc-reveal-simple mt-8 flex flex-wrap items-center justify-center gap-3">
-        <a href="/contact-us" class="bc-btn bc-btn-green bc-magnetic inline-flex items-center justify-center px-8 py-4 text-sm font-black uppercase tracking-[0.14em]"><span>Get an Estimate</span></a>
+        <a href="/contact-us/" class="bc-btn bc-btn-green bc-magnetic inline-flex items-center justify-center px-8 py-4 text-sm font-black uppercase tracking-[0.14em]"><span>Get an Estimate</span></a>
         <a href="tel:+14802294950" class="bc-btn bc-btn-outline bc-magnetic inline-flex items-center justify-center px-8 py-4 text-sm font-black uppercase tracking-[0.14em] text-white"><span>Call (480) 229-4950</span></a>
       </div>
     </div>
